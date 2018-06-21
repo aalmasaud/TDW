@@ -12,10 +12,7 @@
 
 library(httr)
 readFile <- function(file,...) {
-  if (length(args)==0) {
-    stop("At least one argument must be supplied (input file)")
-  }
-  else {
+
   if(grepl(".csv$", file)){
     read.csv(file, ...);
   }
@@ -25,5 +22,4 @@ readFile <- function(file,...) {
   }
   else
     stop("input file must be a .csv or JSON file!")
-}
 }
