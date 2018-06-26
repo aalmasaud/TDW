@@ -11,4 +11,5 @@ renameColumn <- function(df,old,new) {
     names(df)[old]<-new
   else
     colnames(df)[colnames(df)==old] <- new
+  print(df)
 }
