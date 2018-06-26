@@ -2,10 +2,6 @@
 #
 #
 
-# renameColumn
-#
-#
-
 
 renameColumn <- function(df,old,new) {
  # print(old)
