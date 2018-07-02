@@ -3,14 +3,14 @@
 #
 
 
-renameColumn <- function(df,old,new) {
+renameColumn <- function(dataFile,old,new) {
  # print(old)
 #  print(new)
   # print(df)
   if (is.numeric(old))
-    names(df)[old]<-new
+    names(dataFile)[old]<-new
   else
-    colnames(df)[colnames(df)==old] <- new
+    colnames(dataFile)[colnames(dataFile)==old] <- new
  # print(df)
- df
+  dataFile
 }
