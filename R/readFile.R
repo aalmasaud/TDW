@@ -6,7 +6,7 @@ library(httr)
 readFile <- function(file,...) {
 
   if(grepl(".csv$", file)){
-    read.csv(file, ...);
+    read.csv(file,stringsAsFactors=FALSE, ...);
   }
   else if (grepl(".json$", file)){
     library(jsonlite)
