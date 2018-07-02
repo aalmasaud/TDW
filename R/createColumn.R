@@ -3,6 +3,6 @@
 #
 createColumn<-function(dataFile,newcol) {
 
-  dataFile$newcol <- NA
+  dataFile[[newcol]] <- NA
   return(dataFile)
 }
