@@ -1,8 +1,8 @@
 #createColumn
 #
 #
-createColumn<-function(df,newcol) {
+createColumn<-function(dataFile,newcol) {
 
-  df$newcol<-NA
-
+  dataFile$newcol<-NA
+  return(dataFile)
 }
