@@ -1,9 +1,10 @@
 #removeColumn
 #
 #
-removeColumn<-function(dataFile,columns) {
+removeColumn<-function(dataFile,...) {
 
-  within(dataFile,rm(columns))
+  drop <- c(...)
+  dataFile[,!(names(dataFile) %in% drop)]
   return(dataFile)
 
 }
