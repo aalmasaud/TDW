@@ -4,6 +4,7 @@
 
 
 filter <- function(dataFile,...){
+  
 print(...)
 #a <-gsub("\r?\n|\r", " ",paste(...,collapse = ""))
   #d <- gsub(" AND "," & ",a)
