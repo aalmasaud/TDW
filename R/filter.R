@@ -5,5 +5,9 @@
 
 filter <- function(dataFile,...){
 
-dplyr::filter(dataFile,...)
-}
+  d <- gsub(" AND "," & ",...)
+  dd <- gsub(" OR "," | ",d)
+  dataFile %>% filter_(dd)
+
+
+  }
