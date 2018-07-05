@@ -5,7 +5,8 @@
 
 filter <- function(dataFile,...){
 
-  d <- gsub(" AND "," & ",paste(...,collapse = ""))
+a <-gsub("\r","",paste(...,collapse = ""))
+  d <- gsub(" AND "," & ",a)
   print(d)
   dd <- gsub(" OR "," | ",d)
   print(dd)
