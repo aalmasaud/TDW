@@ -9,6 +9,7 @@ filter <- function(dataFile,...){
   print(d)
   dd <- gsub(" OR "," | ",d)
   print(dd)
+  
   #dataFile %>% filter_(dd)
 
 
