@@ -12,7 +12,7 @@ filter <- function(dataFile,...){
   dd <- gsub(" OR "," | ",d)
   print(dd)
   dT <- data.table(dataFile)
-  dT[noquote(dd)]
+ # dT[noquote(dd)]
 
   }
 
