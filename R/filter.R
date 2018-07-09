@@ -10,7 +10,7 @@ filter <- function(dataFile,...){
   dd <- gsub(" OR ", " | ", d)
   print(as.logical(dd))
   e<-paste("dataFile[",dd,"]")
-  eval(parse(text=e))
+  print(parse(text=e))
 #  return(dataFile)
 }
 
