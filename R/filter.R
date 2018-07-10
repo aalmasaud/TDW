@@ -8,11 +8,9 @@ filter <- function(dataFile,...){
   d <- gsub(" AND ", " & ", paste(..., collapse = ""))
   print(d)
   dd <- gsub(" OR ", " | ", d)
-  print(as.logical(dd))
-  dt <- as.data.table(dataFile)
+  setDT(dataFile)
   e<-paste("dt[",dd,"]")
   eval(parse(text=e))
 #  return(dataFile)
 }
-
 
