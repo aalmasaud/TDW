@@ -11,8 +11,8 @@ filter <- function(dataFile,...){
   print(as.logical(dd))
   dt <-as.data.table(dataFile)
   e<-paste("dt[",dd,"]")
-  eval(parse(text=e))
+  #eval(parse(text=e))
   
-#  return(dataFile)
+return(dt)
 }
 
