@@ -10,7 +10,7 @@ filter <- function(dataFile,...){
   setDT(dataFile)
   print(paste0("dataFile[",dd,"]"))
 
-  eval(parse(text=paste0("dataFile[",dd,"]")))
+  eval(parse(text=paste0("dataFile[",dd,",]")))
 #  return(dataFile)
 }
 
