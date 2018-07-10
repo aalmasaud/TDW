@@ -9,7 +9,8 @@ filter <- function(dataFile,...){
   print(d)
   dd <- gsub(" OR ", " | ", d)
   print(as.logical(dd))
-  e<-paste("as.data.table(dataFile)[",dd,"]")
+  dt <-as.data.table(dataFile)
+  e<-paste("dt[",dd,"]")
   eval(parse(text=e))
   
 #  return(dataFile)
