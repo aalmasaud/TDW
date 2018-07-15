@@ -3,9 +3,10 @@
 #
 
 
-join <- function(dataFile1,dataFile2,by1,by2,...){
+join <- function(d,dataFile1,dataFile2,by1,by2,...){
 
-  merge(dataFile1,dataFile2,by.x=by1,by.y=by2,all.x=TRUE)
-
-
+  if (d=="d")
+    dplyr::left_join(dataFile1,dataFile2,by=c(by1))
+  else
+      merge(dataFile1,dataFile2,by.x=by1,by.y=by2,all.x=TRUE)
 }
