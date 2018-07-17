@@ -5,7 +5,7 @@
 library(httr)
 readFile2 <- function(file,...) {
 
-  if(grepl(".csv$", file)){
+  if(grepl("csv$", tolower(type))){
     data.table::fread(file, sep=",", dec=".", quote="\"",
           nrows=Inf, header=TRUE,
           na.strings=getOption("datatable.na.strings","NA"),
@@ -16,10 +16,10 @@ readFile2 <- function(file,...) {
           strip.white=TRUE, fill=FALSE, blank.lines.skip=FALSE,
           key=NULL, index=NULL,
           data.table=getOption("datatable.fread.datatable", TRUE),
-          nThread=2,
+          nThread=2,check.names=FALSE,
           logical01=getOption("datatable.logical01", FALSE))
   }
-  else if (grepl(".json$", file)){
+  else if (grepl("json", tolower(type))){
     library(jsonlite)
     fromJSON(file)
   }

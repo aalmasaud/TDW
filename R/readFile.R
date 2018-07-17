@@ -3,12 +3,12 @@
 #
 
 library(httr)
-readFile <- function(file,...) {
+readFile <- function(type,file,...) {
 
-  if(grepl(".csv$", file)){
+  if(grepl("csv$", tolower(type))){
     read.csv(file,stringsAsFactors=FALSE, ...);
   }
-  else if (grepl(".json$", file)){
+  else if (grepl("json", tolower(type))){
     library(jsonlite)
     fromJSON(file)
   }
