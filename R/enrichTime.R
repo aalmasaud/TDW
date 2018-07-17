@@ -12,7 +12,7 @@ enrichTime <-function(dataFile,fromColumn,toColumn,...) {
     tempStr <- dataFile[i, fromColumn]
 
     if (nchar(tempStr)>8){
-      res[i] <- gsub(".+\\s+", "", tempStr)
+      #res[i] <- gsub(".+\\s+", "", tempStr)
 
     }
     else {
