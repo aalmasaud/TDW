@@ -18,8 +18,8 @@ $(document).ready(function(){
 		$("#functC").text("readFile");
         $("#key").text(mysession.getKey());
         $("#location").text(mysession.getLoc());
-      //on success call enrichTimestamp()
-      enrichTimestamp(session);
+      //on success call removeColumns()
+      removeColumns(session);
     });
     
     //if R returns an error, alert the error message
@@ -33,6 +33,29 @@ $(document).ready(function(){
     });        
   }    
   
+  function removeColumns(mydata){
+	$("#functR").text("removeColumns");
+	
+
+	//perform the request
+    var req = ocpu.call("removeColumn", {
+      dataFile : mydata,
+	  ... : ["Weight__tonnes_","Weight__tonnes_","Flags","Flag_Text","Num_Axles","Axle_Weights__tonnes____","Axle_Spacings__m____"]
+    }, function(session){
+
+			mysession = session;
+
+		$("#functR").text("");
+		$("#functC").text("removeColumn");
+        $("#key").text(mysession.getKey());
+        $("#location").text(mysession.getLoc());
+ 	//on success call removeColumns()
+     	 enrichTimestamp(session);
+    }).fail(function(){
+      alert("Server error: " + req.responseText);
+    });        
+  }
+
   
   function enrichTimestamp(mydata){
 	$("#functR").text("enrichTimestamp");
