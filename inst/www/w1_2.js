@@ -41,7 +41,7 @@ $(document).ready(function(){
     var req = ocpu.call("enrichTimedate", {
       dataFile : mydata,
 	  fromColumn : "Date",
-	  toColumn: "Time",
+	  toColumn: "Date",
 	  startDate: $("#startDate").val()
     }, function(session){
 
@@ -63,7 +63,7 @@ $(document).ready(function(){
 	//perform the request
     var req = ocpu.call("removeColumn", {
      "dataFile" : mydata,
-	 "..." : '["Flags","Weight__tonnes_","Flag_Text","Num_Axles","Axle_Weights__tonnes____","Axle_Spacings__m____"]'
+	 "..." : '["Flags","Weight__tonnes_","Flag_Text","Num_Axles","Axle_Weights__tonnes____","Axle_Spacings__m____","Vehicle_Id"]'
     }, function(session){
 
 			mysession = session;
