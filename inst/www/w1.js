@@ -36,14 +36,14 @@ $(document).ready(function(){
   
   function enrichTimestamp(mydata){
 	$("#functR").text("enrichTimestamp");
-	var startDate = $("#startDate").val().toISOString();
+	
 
 	//perform the request
     var req = ocpu.call("enrichTimedate", {
       dataFile : mydata,
 	  fromColumn : "Date",
 	  toColumn: "Time",
-	  startDate: startDate
+	  startDate: $("#startDate").val()
     }, function(session){
 
 			mysession = session;
