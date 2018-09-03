@@ -51,6 +51,8 @@ $(document).ready(function(){
 		$("#functC").text("enrichTimedate");
         $("#key").text(mysession.getKey());
         $("#location").text(mysession.getLoc());
+				      //on success call RoundToNearestHour()
+      RoundToNearestHour(session);
 		
     }).fail(function(){
       alert("Server error: " + req.responseText);
@@ -97,6 +99,30 @@ $(document).ready(function(){
         $("#location").text(mysession.getLoc());
 		      //on success call enrichTimestamp()
       enrichTimestamp(session);
+    }).fail(function(){
+      alert("Server error: " + req.responseText);
+    });        
+  }
+
+   function RoundToNearestHour(mydata){
+	$("#functR").text("RoundToNearestHour");
+
+	//perform the request
+    var req = ocpu.call("RoundToNearestHour", {
+     "dataFile" : mydata,
+	 "type" : "trunc",
+	 "fromColumn" : "Date",
+	 "toColumn" : "Hour"
+    }, function(session){
+
+			mysession = session;
+
+		$("#functR").text("");
+		$("#functC").text("RoundToNearestHour");
+        $("#key").text(mysession.getKey());
+        $("#location").text(mysession.getLoc());
+		      //on success call enrichTimestamp()
+      //enrichTimestamp(session);
     }).fail(function(){
       alert("Server error: " + req.responseText);
     });        
