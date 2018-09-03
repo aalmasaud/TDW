@@ -3,6 +3,6 @@
 #
 removeColumn<-function(dataFile,...) {
 
-  df = dataFile[,!names(dataFile) %in% dput(as.character(c(...)))]
+  df = dataFile[,!names(dataFile) %in% dput(as.character(...))]
 
 }
