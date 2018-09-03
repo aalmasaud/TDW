@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+
+    <title>Workflow TAT 1</title>
+
+    <!-- OpenCPU client library -->
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="//cdn.opencpu.org/opencpu-0.4.js"></script>
+<script src="w1.js"></script>
+
+
+    
+
+    <style>
+
+
+
+    </style>
+
+    
+
+  </head>
+
+    
+
+  <body>
+  <h1>Traffic Analysis Task 1</h1>
+	
+	<table>
+	
+	<tr>
+		<td>
+			<b>Traffic Data File</b> 
+		</td>
+		<td>
+			<input type="text" id="fileaddr"> 
+		</td>
+		<td> 
+			<b>File Type</b> 
+		</td>
+		<td>
+			<select id="ftype">
+				<option value="csv">CSV</option>
+				<option value="xls">XLS</option>
+				<option value="json">JSON</option>
+			</select> 
+		</td>
+	</tr>
+	<tr>
+		<td>   
+			<b> Start Date </b>
+		</td>
+		<td> 
+			<input type="date" name="sdate" placeholder="YYYY-MM-DD" required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" title="Enter a date in this formart YYYY-MM-DD">
+		</td>
+		<td></td>
+		<td>
+			<button id="submitbutton" type="button">Start</button>		
+		</td>
+	</tr>
+	</table>
+   <br/>
+
+<table name="stats" id="statsTab">
+<tr><td> <b> Workflow Run Statistics </b> </td> </tr>
+<tr><td> <b> Running Function:</b>  <tt id="functR"></tt> </td> </tr>
+<tr><td> <b> Completed Function:</b>  <tt id="functC"></tt> </td> </tr>
+<tr><td> <b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Session ID:</b> <tt id="key"></tt> </td> </tr>
+<tr><td> <b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Session URI:</b> <tt id="location"></tt>  </td> </tr>
+</table>
+
+    <br>
+	
+	</body>
+
+</html>
