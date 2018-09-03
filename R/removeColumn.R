@@ -2,7 +2,7 @@
 #
 #
 removeColumn<-function(dataFile,...) {
-
-  df = dataFile[,!names(dataFile) %in% dput(as.character(jsonlite::fromJSON(...)))]
+  t <-jsonlite::fromJSON(...)
+  df = dataFile[,!names(dataFile) %in% dput(as.character(t))]
 
 }
