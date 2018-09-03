@@ -72,12 +72,38 @@ $(document).ready(function(){
 		$("#functC").text("removeColumns");
         $("#key").text(mysession.getKey());
         $("#location").text(mysession.getLoc());
+		      //on success call filter()
+      filter(session);
+    }).fail(function(){
+      alert("Server error: " + req.responseText);
+    });        
+  }
+
+  
+   function filter(mydata){
+	$("#functR").text("filter");
+
+	//perform the request
+    var req = ocpu.call("filter2", {
+     "dataFile" : mydata,
+	 "..." : "Class == 2"
+    }, function(session){
+
+			mysession = session;
+
+		$("#functR").text("");
+		$("#functC").text("filter");
+        $("#key").text(mysession.getKey());
+        $("#location").text(mysession.getLoc());
 		      //on success call enrichTimestamp()
       enrichTimestamp(session);
     }).fail(function(){
       alert("Server error: " + req.responseText);
     });        
   }
+
+  
+  
   
   $("#submitbutton").on("click", function(){
     
