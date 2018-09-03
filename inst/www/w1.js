@@ -39,7 +39,7 @@ $(document).ready(function(){
 	var startDate = $("#startDate").val().toISOString();
 
 	//perform the request
-    var req = ocpu.call("enrichTime", {
+    var req = ocpu.call("enrichTimedate", {
       dataFile : mydata,
 	  fromColumn : "Date",
 	  toColumn: "Time",
