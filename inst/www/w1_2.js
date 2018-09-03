@@ -63,7 +63,7 @@ $(document).ready(function(){
 	//perform the request
     var req = ocpu.call("removeColumn", {
      "dataFile" : mydata,
-	 "..." : '["Weight__tonnes_","Weight__tonnes_","Flags","Flag_Text","Num_Axles","Axle_Weights__tonnes____","Axle_Spacings__m____"]'
+	 "..." : '["Flags","Weight__tonnes_","Flag_Text","Num_Axles","Axle_Weights__tonnes____","Axle_Spacings__m____"]'
     }, function(session){
 
 			mysession = session;
