@@ -108,7 +108,7 @@ $(document).ready(function(){
 	$("#functR").text("RoundToNearestHour");
 
 	//perform the request
-    var req = ocpu.call("RoundToNearestHour", {
+    var req = ocpu.call("roundToNearestHour", {
      "dataFile" : mydata,
 	 "type" : "trunc",
 	 "fromColumn" : "Date",
