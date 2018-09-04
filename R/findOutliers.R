@@ -4,12 +4,12 @@
 
 findOutliers <- function(dataFile,dataColumn,...) {
 dataFile <- data.frame(dataFile)
-iqr1 <- aggregate(data=dataFile[,dataColumn],by=list(
+iqr1 <- aggregate(data=dataFile$dataColumn,by=list(
   newTime=dataFile$newTime,
   Lane=dataFile$Lane),
   FUN=function(x) quantile(x, probs = 0.25)-IQR(x)*2)
 
-iqr3 <- aggregate(dataFile[,dataColumn],by=list(
+iqr3 <- aggregate(dataFile$dataColumn,by=list(
   newTime=dataFile$newTime,
   Lane=dataFile$Lane),
   FUN=function(x) quantile(x, probs = 0.75)+IQR(x)*2)
