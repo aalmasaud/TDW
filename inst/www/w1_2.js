@@ -121,6 +121,50 @@ $(document).ready(function(){
 		$("#functC").text("RoundToNearestHour");
         $("#key").text(mysession.getKey());
         $("#location").text(mysession.getLoc());
+		      //on success call RemoveOutliers()
+      RemoveOutliers1(session);
+    }).fail(function(){
+      alert("Server error: " + req.responseText);
+    });        
+  }
+
+  
+   function RemoveOutliers1(mydata){
+	$("#functR").text("RemoveOutliers-Speed");
+
+	//perform the request
+    var req = ocpu.call("findOutliers", {
+     "dataFile" : mydata,
+	 "dataColumn" : "Speed__mph_"
+    }, function(session){
+
+			mysession = session;
+
+		$("#functR").text("");
+		$("#functC").text("RemoveOutliers-Speed");
+        $("#key").text(mysession.getKey());
+        $("#location").text(mysession.getLoc());
+		      //on success call RemoveOutliers2()
+      RemoveOutliers2(session);
+    }).fail(function(){
+      alert("Server error: " + req.responseText);
+    });        
+  }  
+   function RemoveOutliers2(mydata){
+	$("#functR").text("RemoveOutliers-Length");
+
+	//perform the request
+    var req = ocpu.call("findOutliers", {
+     "dataFile" : mydata,
+	 "dataColumn" : "Length__m_"
+    }, function(session){
+
+			mysession = session;
+
+		$("#functR").text("");
+		$("#functC").text("RemoveOutliers-Length");
+        $("#key").text(mysession.getKey());
+        $("#location").text(mysession.getLoc());
 		      //on success call enrichTimestamp()
       //enrichTimestamp(session);
     }).fail(function(){
