@@ -165,6 +165,8 @@ $(document).ready(function(){
 		$("#functC").text("RemoveOutliers-Length");
         $("#key").text(mysession.getKey());
         $("#location").text(mysession.getLoc());
+			//on success create output file link
+		$("#csvFileLink").attr("href", mysession.getLoc() + "R/.val/csv")
 		      //on success call enrichTimestamp()
       //enrichTimestamp(session);
     }).fail(function(){
