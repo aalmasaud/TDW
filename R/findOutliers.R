@@ -16,7 +16,7 @@ names(new)<- gsub("\\.","_",names(new))
 
 rOutliers <- filter2(new,paste(dataColumn," < x_x OR ",dataColumn," > x_y",sep=""))
 rWithoutOutliers1 <- filter2(new,paste(dataColumn," > x_x AND ",dataColumn," < x_y",sep=""))
-rWithoutOutliers <- removeColumn(rWithoutOutliers1,"x_x,x_y")
+rWithoutOutliers <- removeColumn(rWithoutOutliers1,'["x_x","x_y"]')
 return(rWithoutOutliers)
 }
 
