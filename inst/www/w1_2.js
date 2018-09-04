@@ -155,7 +155,7 @@ $(document).ready(function(){
 
 	//perform the request
     var req = ocpu.call("findOutliers", {
-     "dataFile" : mydata,
+     "mydatafile" : mydata,
 	 "dataColumn" : "Length__m_"
     }, function(session){
 
