@@ -2,10 +2,14 @@ $(document).ready(function(){
   
   function readFile(ftype, myfile){
     //disable the button during upload
-    $("#submitbutton").attr("disabled", "disabled");        
+    $("#submitbutton").attr("disabled", "disabled");
+	 
 
-	$("#functR").text("readFile");
-    
+	$("#functC").text("");
+        $("#key").text("");
+        $("#location").text("");
+	  $("#functR").text("readFile");
+    $("#csvFileLink").removeAttr("href");
     //perform the request
     var req = ocpu.call("readFile", {
       type : ftype,
@@ -166,7 +170,7 @@ $(document).ready(function(){
         $("#key").text(mysession.getKey());
         $("#location").text(mysession.getLoc());
 			//on success create output file link
-		$("#csvFileLink").attr("href", mysession.getLoc() + "R/.val/csv")
+		$("#csvFileLink").attr("href", mysession.getLoc() + "R/.val/csv");
 		      //on success call enrichTimestamp()
       //enrichTimestamp(session);
     }).fail(function(){
