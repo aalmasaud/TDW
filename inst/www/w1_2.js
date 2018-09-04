@@ -134,7 +134,7 @@ $(document).ready(function(){
 
 	//perform the request
     var req = ocpu.call("findOutliers", {
-     "dataFile" : mydata,
+     "mydatafile" : mydata,
 	 "dataColumn" : "Speed__mph_"
     }, function(session){
 
