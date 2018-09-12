@@ -14,7 +14,10 @@ readFile <- function(type,file,...) {
     data <- fromJSON(file)
   }
   else if (grepl("xls",tolower(type))){
-    readxl::read_xls(file,skip=6,...)
+    xlsfile <- tempfile()
+    download.file(file, xlsfile, mode = 'wb')
+    data <- readxl::read_xls(xlsfile,skip=6,...)
+
   }
   else
     stop("input file must be a .csv or JSON file!")
