@@ -5,7 +5,7 @@
 filter2 <- function(dataFile,time,column,...){
   if (grepl("y$", tolower(time))){
     require(lubridate)
-    dplyr::filter(dataFile,minute(coulmn) == ...)        
+    dplyr::filter(dataFile,minute(column) == ...)        
     }
   else if (grepl("n$", tolower(time))){
 require(sqldf)
