@@ -93,8 +93,9 @@ $(document).ready(function(){
 	//perform the request
       var req = ocpu.call("filterTime", {
      "dataFile" : mydata,
+"Time":"Y",
      "column" : "Time",
-     "minuteValue" : 50
+     "..." : 50
     }, function(session){
 
 			mysession = session;
@@ -165,6 +166,8 @@ $(document).ready(function(){
 	//perform the request
     var req = ocpu.call("filter2", {
      "dataFile" : mydata,
+	    "time":"N",
+	    "column":"Class",
 	 "..." : "Class == 2"
     }, function(session){
 
