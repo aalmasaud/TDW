@@ -45,8 +45,8 @@ $(document).ready(function(){
         $("#location").text("");
 	//perform the request
     var req = ocpu.call("readFile", {
-      type : ftype2,
-	  file : myfile2
+      type : $("#ftype2").val(),
+	  file : $("#fileaddr2").val()
     }, function(session){
 
 			mysession = session;
