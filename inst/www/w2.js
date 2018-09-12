@@ -79,6 +79,31 @@ $(document).ready(function(){
         $("#key").text(mysession.getKey());
         $("#location").text(mysession.getLoc());
 				      //on success call RoundToNearestHour()
+      FilterTime(session);
+		
+    }).fail(function(){
+      alert("Server error: " + req.responseText);
+    });        
+  }	
+
+  function FilterTime(mydata){
+	$("#functR").text("filterTime");
+        $("#key").text("");
+        $("#location").text("");
+	//perform the request
+      var req = ocpu.call("filterTime", {
+     "dataFile" : mydata,
+     "column" : "Time",
+     "minuteValue" : 50
+    }, function(session){
+
+			mysession = session;
+
+		$("#functR").text("");
+		$("#functC").text("filterTime");
+        $("#key").text(mysession.getKey());
+        $("#location").text(mysession.getLoc());
+				      //on success call RoundToNearestHour()
       //RoundToNearestHour(session);
 		
     }).fail(function(){
