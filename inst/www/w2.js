@@ -91,7 +91,7 @@ $(document).ready(function(){
         $("#key").text("");
         $("#location").text("");
 	//perform the request
-      var req = ocpu.call("filterTime", {
+      var req = ocpu.call("filter2", {
      "dataFile" : mydata,
 "time":"Y",
      "column" : "Time",
