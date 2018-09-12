@@ -38,6 +38,30 @@ $(document).ready(function(){
     });        
   }    
   
+
+  function readXLS(mydata){
+	$("#functR").text("readXLS");
+        $("#key").text("");
+        $("#location").text("");
+	//perform the request
+    var req = ocpu.call("readFile", {
+      type : ftype2,
+	  file : myfile2
+    }, function(session){
+
+			mysession = session;
+
+		$("#functR").text("");
+		$("#functC").text("readXLS");
+        $("#key").text(mysession.getKey());
+        $("#location").text(mysession.getLoc());
+				      //on success call RoundToNearestHour()
+      //RoundToNearestHour(session);
+		
+    }).fail(function(){
+      alert("Server error: " + req.responseText);
+    });        
+  }
   
   function enrichTimestamp(mydata){
 	$("#functR").text("enrichTimestamp");
@@ -174,30 +198,6 @@ $(document).ready(function(){
 		$("#csvFileLink").attr("href", mysession.getLoc() + "R/.val/csv");
 		      //on success call readXLS()
       readXLS(session);
-    }).fail(function(){
-      alert("Server error: " + req.responseText);
-    });        
-  }
-
-   function readXLS(mydata){
-	$("#functR").text("ReadXLS");
-
-	//perform the request
-    var req = ocpu.call("readFile", {
-      type : ftype2,
-      file : myfile2
-    }, function(session){
-
-			mysession2 = session;
-
-		$("#functR").text("");
-		$("#functC").text("ReadXLS");
-        $("#key").text(mysession2.getKey());
-        $("#location").text(mysession2.getLoc());
-			//on success create output file link
-		$("#graphFileLink").attr("href", mysession2.getLoc() + "R/.val/csv");
-		      //on success call enrichTimestamp()
-      //enrichTimestamp(session);
     }).fail(function(){
       alert("Server error: " + req.responseText);
     });        
