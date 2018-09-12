@@ -93,7 +93,7 @@ $(document).ready(function(){
 	//perform the request
       var req = ocpu.call("filterTime", {
      "dataFile" : mydata,
-"Time":"Y",
+"time":"Y",
      "column" : "Time",
      "..." : 50
     }, function(session){
