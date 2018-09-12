@@ -23,7 +23,8 @@ $(document).ready(function(){
         $("#key").text(mysession.getKey());
         $("#location").text(mysession.getLoc());
       //on success call enrichTimestamp()
-      removeColumns(session);
+      readXLS(session);
+	    //removeColumns(session);
     });
     
     //if R returns an error, alert the error message
