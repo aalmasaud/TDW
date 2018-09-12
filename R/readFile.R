@@ -23,5 +23,7 @@ readFile <- function(type,file,...) {
     stop("input file must be a .csv or JSON file!")
 
   names(data)<- gsub("\\.","_",names(data))
+  
+  names(data)<- gsub(" ","_",names(data))
   return(data)
 }
