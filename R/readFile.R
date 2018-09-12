@@ -16,7 +16,7 @@ readFile <- function(type,file,...) {
   else if (grepl("xls",tolower(type))){
     xlsfile <- tempfile()
     download.file(file, xlsfile, mode = 'wb')
-    data <- readxl::read_xls(xlsfile,skip=6,...)
+    data <- as.data.frame(readxl::read_xls(xlsfile,skip=6,...))
 
   }
   else
