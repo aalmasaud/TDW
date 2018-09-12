@@ -41,8 +41,6 @@ $(document).ready(function(){
 
   function readXLS(mydata){
 	$("#functR").text("readXLS");
-        $("#key").text("");
-        $("#location").text("");
 	//perform the request
     var req = ocpu.call("readFile", {
       type : $("#ftype2").val(),
@@ -55,14 +53,39 @@ $(document).ready(function(){
 		$("#functC").text("readXLS");
         $("#key").text(mysession.getKey());
         $("#location").text(mysession.getLoc());
-				      //on success call RoundToNearestHour()
-      //RoundToNearestHour(session);
+				      //on success call formatDateISO()
+      formatDateISO(session);
 		
     }).fail(function(){
       alert("Server error: " + req.responseText);
     });        
   }
   
+  function formatDateISO(mydata){
+	$("#functR").text("formatDateTimeISO");
+        $("#key").text("");
+        $("#location").text("");
+	//perform the request
+    var req = ocpu.call("formatDateTimeISO", {
+      dataFile : mydata,
+      fromColumn : "Local_Time_in_Manchester_(airport)",
+      toColumn : "Time" 
+    }, function(session){
+
+			mysession = session;
+
+		$("#functR").text("");
+		$("#functC").text("formatDateTimeISO");
+        $("#key").text(mysession.getKey());
+        $("#location").text(mysession.getLoc());
+				      //on success call RoundToNearestHour()
+      //RoundToNearestHour(session);
+		
+    }).fail(function(){
+      alert("Server error: " + req.responseText);
+    });        
+  }	
+	
   function enrichTimestamp(mydata){
 	$("#functR").text("enrichTimestamp");
 
