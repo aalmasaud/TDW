@@ -171,6 +171,30 @@ $(document).ready(function(){
         $("#location").text(mysession.getLoc());
 			//on success create output file link
 		$("#csvFileLink").attr("href", mysession.getLoc() + "R/.val/csv");
+		      //on success call readXLS()
+      readXLS(session);
+    }).fail(function(){
+      alert("Server error: " + req.responseText);
+    });        
+  }
+
+   function readXLS(mydata){
+	$("#functR").text("ReadXLS");
+
+	//perform the request
+    var req = ocpu.call("readFile", {
+      type : ftype2,
+      file : myfile2
+    }, function(session){
+
+			mysession2 = session;
+
+		$("#functR").text("");
+		$("#functC").text("ReadXLS");
+        $("#key").text(mysession2.getKey());
+        $("#location").text(mysession2.getLoc());
+			//on success create output file link
+		//$("#csvFileLink").attr("href", mysession2.getLoc() + "R/.val/csv");
 		      //on success call enrichTimestamp()
       //enrichTimestamp(session);
     }).fail(function(){
@@ -178,7 +202,7 @@ $(document).ready(function(){
     });        
   }
 
-  
+    
   
   
   $("#submitbutton").on("click", function(){
@@ -186,9 +210,15 @@ $(document).ready(function(){
     //arguments
     var ftype = $("#ftype").val();
     var myfile = $("#fileaddr").val();
+    var ftype2 = $("#ftype2").val();
+    var myfile2 = $("#fileaddr2").val();
     
     if(!myfile){
-      alert("No file selected.");
+      alert("No Traffic data file entered.");
+      return;
+    }
+	     if(!myfile2){
+      alert("No Weather data file entered.");
       return;
     }
     
