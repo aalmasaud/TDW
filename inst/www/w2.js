@@ -194,7 +194,7 @@ $(document).ready(function(){
         $("#key").text(mysession2.getKey());
         $("#location").text(mysession2.getLoc());
 			//on success create output file link
-		//$("#csvFileLink").attr("href", mysession2.getLoc() + "R/.val/csv");
+		$("#graphFileLink").attr("href", mysession2.getLoc() + "R/.val/csv");
 		      //on success call enrichTimestamp()
       //enrichTimestamp(session);
     }).fail(function(){
