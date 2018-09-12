@@ -69,7 +69,7 @@ $(document).ready(function(){
     var req = ocpu.call("formatDateTimeISO", {
       dataFile : mydata,
       "fromColumn" : "Local_time_in_Manchester_(airport)",
-      toColumn : "Time" 
+      "toColumn" : "Time" 
     }, function(session){
 
 			mysession = session;
