@@ -68,7 +68,7 @@ $(document).ready(function(){
 	//perform the request
     var req = ocpu.call("formatDateTimeISO", {
       dataFile : mydata,
-      fromColumn : "Local_Time_in_Manchester_(airport)",
+      "fromColumn" : "Local_Time_in_Manchester_(airport)",
       toColumn : "Time" 
     }, function(session){
 
