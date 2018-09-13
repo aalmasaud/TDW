@@ -9,7 +9,7 @@ roundToNearestHour <- function(dataFile,type,fromColumn,toColumn,...) {
 
   else if (grepl("round$", tolower(type))){
     res <- round(strptime(dataFile[,fromColumn],"%Y-%m-%d %H:%M:%S"), units="hour")
-    dataFile[toColumn] <- res
+    dataFile$toColumn <- res
     return(dataFile)
   }
 
