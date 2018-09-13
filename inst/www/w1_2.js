@@ -115,8 +115,7 @@ $(document).ready(function(){
     var req = ocpu.call("roundToNearestHour", {
      "dataFile" : mydata,
 	 "type" : "trunc",
-	 "fromColumn" : "Date",
-	 "toColumn" : "Hour"
+	 "fromColumn" : "Date"
     }, function(session){
 
 			mysession = session;
