@@ -183,8 +183,7 @@ $(document).ready(function(){
     var req = ocpu.call("roundToNearestHour", {
      "dataFile" : mydata,
 	 "type" : "trunc",
-	 "fromColumn" : "Date",
-	 "toColumn" : "Hour"
+	 "fromColumn" : "Date"
     }, function(session){
 
 			mysession = session;
@@ -207,8 +206,7 @@ $(document).ready(function(){
     var req = ocpu.call("roundToNearestHour", {
      "dataFile" : mydata,
 	 "type" : "round",
-	 "fromColumn" : "Time",
-	 "toColumn" : "Hour"
+	 "fromColumn" : "Time"
     }, function(session){
 
 			mysession2 = session;
