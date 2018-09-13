@@ -215,13 +215,34 @@ $(document).ready(function(){
 		$("#functC").text("RoundToNearestHour");
         $("#key").text(mysession2.getKey());
         $("#location").text(mysession2.getLoc());
+		      //on success call CreateColumn()
+      CreateColumn(session,"Condition");
+    }).fail(function(){
+      alert("Server error: " + req.responseText);
+    });        
+  }
+
+   function CreateColumn(mydata,colName){
+	$("#functR").text("createColumn");
+
+	//perform the request
+    var req = ocpu.call("createColumn", {
+     "dataFile" : mydata,
+	 "newcol" : colName
+    }, function(session){
+
+			mysession = session;
+
+		$("#functR").text("");
+		$("#functC").text("createColumn");
+        $("#key").text(mysession.getKey());
+        $("#location").text(mysession.getLoc());
 		      //on success call RemoveOutliers()
       //RemoveOutliers1(session);
     }).fail(function(){
       alert("Server error: " + req.responseText);
     });        
   }
-
   
    function RemoveOutliers1(mydata){
 	$("#functR").text("RemoveOutliers-Speed");
