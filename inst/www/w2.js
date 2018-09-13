@@ -47,12 +47,12 @@ $(document).ready(function(){
 	  file : $("#fileaddr2").val()
     }, function(session){
 
-			mysession = session;
+			mysession2 = session;
 
 		$("#functR").text("");
 		$("#functC").text("readXLS");
-        $("#key").text(mysession.getKey());
-        $("#location").text(mysession.getLoc());
+        $("#key").text(mysession2.getKey());
+        $("#location").text(mysession2.getLoc());
 				      //on success call formatDateISO()
       formatDateISO(session);
 		
@@ -70,12 +70,12 @@ $(document).ready(function(){
       "toColumn" : "Time" 
     }, function(session){
 
-			mysession = session;
+			mysession2 = session;
 
 		$("#functR").text("");
 		$("#functC").text("formatDateTimeISO");
-        $("#key").text(mysession.getKey());
-        $("#location").text(mysession.getLoc());
+        $("#key").text(mysession2.getKey());
+        $("#location").text(mysession2.getLoc());
 				      //on success call RoundToNearestHour()
       FilterTime(session);
 		
@@ -92,14 +92,14 @@ $(document).ready(function(){
      "..." : "wtime"
     }, function(session){
 
-			mysession = session;
+			mysession2 = session;
 
 		$("#functR").text("");
 		$("#functC").text("filterTime");
-        $("#key").text(mysession.getKey());
-        $("#location").text(mysession.getLoc());
+        $("#key").text(mysession2.getKey());
+        $("#location").text(mysession2.getLoc());
 				      //on success call RoundToNearestHour()
-      //RoundToNearestHour(session);
+      RoundToNearestHour2(session);
 		
     }).fail(function(){
       alert("Server error: " + req.responseText);
@@ -195,6 +195,30 @@ $(document).ready(function(){
         $("#location").text(mysession.getLoc());
 		      //on success call RemoveOutliers()
       RemoveOutliers1(session);
+    }).fail(function(){
+      alert("Server error: " + req.responseText);
+    });        
+  }
+
+   function RoundToNearestHour2(mydata){
+	$("#functR").text("RoundToNearestHour");
+
+	//perform the request
+    var req = ocpu.call("roundToNearestHour", {
+     "dataFile" : mydata,
+	 "type" : "round",
+	 "fromColumn" : "Time",
+	 "toColumn" : "Hour"
+    }, function(session){
+
+			mysession2 = session;
+
+		$("#functR").text("");
+		$("#functC").text("RoundToNearestHour");
+        $("#key").text(mysession2.getKey());
+        $("#location").text(mysession2.getLoc());
+		      //on success call RemoveOutliers()
+      //RemoveOutliers1(session);
     }).fail(function(){
       alert("Server error: " + req.responseText);
     });        
