@@ -89,7 +89,7 @@ $(document).ready(function(){
 	//perform the request
       var req = ocpu.call("filter2", {
      "dataFile" : mydata,
-     "..." : "substr(Time,15,2) = '50'"
+     "..." : "wtime"
     }, function(session){
 
 			mysession = session;
