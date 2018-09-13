@@ -2,17 +2,9 @@
 #
 #
 
-filter2 <- function(dataFile,time,column,...){
-  if (grepl("y$", tolower(time))){
-    require(lubridate)
-    dplyr::filter(dataFile,minute(column) == ...)        
-    }
-  else if (grepl("n$", tolower(time))){
+filter2 <- function(dataFile,...){
 require(sqldf)
   sqldf(paste0("SELECT * FROM dataFile WHERE ",...))
-
-#  eval(parse(text=paste0("dplyr::filter(dataFile,",dd,")")))
-#  return(dataFile)
     }
 }
 
