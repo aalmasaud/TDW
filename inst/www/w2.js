@@ -93,9 +93,7 @@ $(document).ready(function(){
 	//perform the request
       var req = ocpu.call("filter2", {
      "dataFile" : mydata,
-"time":"Y",
-     "column" : "Time",
-     "..." : 50
+     "..." : "substr(Time,15,2) = '50'"
     }, function(session){
 
 			mysession = session;
@@ -166,9 +164,7 @@ $(document).ready(function(){
 	//perform the request
     var req = ocpu.call("filter2", {
      "dataFile" : mydata,
-	    "time":"N",
-	    "column":"Class",
-	 "..." : "Class == 2"
+     "..." : "Class == 2"
     }, function(session){
 
 			mysession = session;
