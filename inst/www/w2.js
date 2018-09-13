@@ -63,8 +63,6 @@ $(document).ready(function(){
   
   function formatDateISO(mydata){
 	$("#functR").text("formatDateTimeISO");
-        $("#key").text("");
-        $("#location").text("");
 	//perform the request
     var req = ocpu.call("formatDateTimeISO", {
       dataFile : mydata,
@@ -88,8 +86,6 @@ $(document).ready(function(){
 
   function FilterTime(mydata){
 	$("#functR").text("filterTime");
-        $("#key").text("");
-        $("#location").text("");
 	//perform the request
       var req = ocpu.call("filter2", {
      "dataFile" : mydata,
