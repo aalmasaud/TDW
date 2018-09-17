@@ -2,7 +2,7 @@
 #
 #
 selectColumn<-function(dataFile,...) {
-
-  df = dataFile[dput(as.character(c(...)))]
+t <-jsonlite::fromJSON(...)
+  df = dataFile[dput(as.character(t))]
 
 }
