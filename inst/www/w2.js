@@ -344,7 +344,7 @@ $(document).ready(function(){
 	 "dataFile2" : mydata2,
 	 "by1":"Hour",
 	 "by2":"Hour",
-	 "...": "Hour"
+	 "...": "all.x"
     }, function(session){
 
 			mysession3 = session;
