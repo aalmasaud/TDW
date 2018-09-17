@@ -244,6 +244,28 @@ $(document).ready(function(){
     });        
   }
   
+   function ExtractWeather(mydata){
+	$("#functR").text("extractWeather");
+
+	//perform the request
+    var req = ocpu.call("extractWeather", {
+     "dataFile" : mydata,
+	 "toColumn" : "Condition"
+    }, function(session){
+
+			mysession = session;
+
+		$("#functR").text("");
+		$("#functC").text("extractWeather");
+        $("#key").text(mysession.getKey());
+        $("#location").text(mysession.getLoc());
+		      //on success call RemoveOutliers()
+      //RemoveOutliers1(session);
+    }).fail(function(){
+      alert("Server error: " + req.responseText);
+    });        
+  }	
+	
    function RemoveOutliers1(mydata){
 	$("#functR").text("RemoveOutliers-Speed");
 
