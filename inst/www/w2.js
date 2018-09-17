@@ -23,8 +23,8 @@ $(document).ready(function(){
         $("#key").text(mysession.getKey());
         $("#location").text(mysession.getLoc());
       //on success call enrichTimestamp()
-      readXLS(session);
-	    //removeColumns(session);
+//      readXLS(session);
+	    removeColumns(session);
     });
     
     //if R returns an error, alert the error message
@@ -329,7 +329,7 @@ $(document).ready(function(){
 			//on success create output file link
 		$("#csvFileLink").attr("href", mysession.getLoc() + "R/.val/csv");
 		      //on success call readXLS()
-      readXLS(session);
+			  readXLS(session);
     }).fail(function(){
       alert("Server error: " + req.responseText);
     });        
