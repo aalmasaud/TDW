@@ -4,6 +4,8 @@
 
 
 extractWeather <- function(dataFile,fromColumn,toColumn){
+    
+    c <- character(nrow(dataFile))
 
     for(i in 1:nrow(dataFile)) {
     tempStr <- dataFile[i,fromColumn]
