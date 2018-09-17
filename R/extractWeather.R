@@ -3,10 +3,10 @@
 #
 
 
-extractWeather <- function(dataFile,toColumn){
+extractWeather <- function(dataFile,fromColumn,toColumn){
 
     for(i in 1:nrow(dataFile)) {
-    tempStr <- dataFile[i,Weather_phenomena]
+    tempStr <- dataFile[i,fromColumn]
     if(grepl("fog$", tolower(tempStr)))
     c[i] <- "Fog"
     if(grepl("wind$", tolower(tempStr)))
