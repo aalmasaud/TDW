@@ -1,4 +1,4 @@
-#join
+#join : left join function using two different methods
 #
 #
 
