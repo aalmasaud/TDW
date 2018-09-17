@@ -7,15 +7,15 @@ extractWeather <- function(dataFile,toColumn){
 
     for(i in 1:nrow(dataFile)) {
     tempStr <- dataFile[i,Weather_phenomena]
-    if(grepl("fog$", tolower(type)))
+    if(grepl("fog$", tolower(tempStr)))
     c[i] <- "Fog"
-    if(grepl("rain$", tolower(type)))
+    if(grepl("wind$", tolower(tempStr)))
+    c[i] <- "Wind"
+    if(grepl("rain$", tolower(tempStr)))
       c[i] <- "Rain"
-    if(grepl("hail$", tolower(type)))
+    if(grepl("hail$", tolower(tempStr)))
       c[i] <- "Hail"
-    if(grepl("snow$", tolower(type)))
-      c[i] <- "Snow"
-    if(grepl("snow$", tolower(type)))
+    if(grepl("snow$", tolower(tempStr)))
       c[i] <- "Snow"
     }
   dataFile[toColumn] <- c
