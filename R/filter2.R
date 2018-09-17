@@ -7,7 +7,7 @@ filter2 <- function(dataFile,...){
 condition <- "substr(Time,15,2) = '50'"
   }
   else 
-    condition <- ...
+    condition <- paste0(...)
 require(sqldf)
   sqldf(paste0("SELECT * FROM dataFile WHERE ",condition))
 
