@@ -19,6 +19,8 @@ extractWeather <- function(dataFile,fromColumn,toColumn){
       c[i] <- "Hail"
     if(grepl("snow$", tolower(tempStr)))
       c[i] <- "Snow"
+    if(nchar(c[i] < 1)
+       c[i] <- "Normal"
     }
   dataFile[toColumn] <- c
   return(dataFile)
