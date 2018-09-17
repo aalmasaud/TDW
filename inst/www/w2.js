@@ -348,7 +348,7 @@ $(document).ready(function(){
 
 			mysession3 = session;
 
-		$("#functR").text("t");
+		$("#functR").text("");
 		$("#functC").text("join");
         $("#key").text(mysession3.getKey());
         $("#location").text(mysession3.getLoc());
@@ -358,6 +358,7 @@ $(document).ready(function(){
       alert("Server error: " + req.responseText);
     });        
   }
+	
     function Join2(mydata1,mydata2){
 	$("#functR").text("join2");
 
@@ -383,8 +384,6 @@ $(document).ready(function(){
       alert("Server error: " + req.responseText);
     });        
   }
-    
-  
   
   
   $("#submitbutton").on("click", function(){
