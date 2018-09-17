@@ -2,7 +2,7 @@
 #
 #
 
-filter <- function(dataFile,...){
+Old.filter <- function(dataFile,...){
 
   library(data.table)
   d <- gsub(" AND ", " & ", paste(..., collapse = ""))
