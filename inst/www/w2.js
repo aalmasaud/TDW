@@ -231,14 +231,14 @@ $(document).ready(function(){
 	 "newcol" : colName
     }, function(session){
 
-			mysession = session;
+			mysession2 = session;
 
 		$("#functR").text("");
 		$("#functC").text("createColumn");
-        $("#key").text(mysession.getKey());
-        $("#location").text(mysession.getLoc());
+        $("#key").text(mysession2.getKey());
+        $("#location").text(mysession2.getLoc());
 		      //on success call RemoveOutliers()
-      //RemoveOutliers1(session);
+      ExtractWeather(session);
     }).fail(function(){
       alert("Server error: " + req.responseText);
     });        
@@ -253,12 +253,12 @@ $(document).ready(function(){
 	 "toColumn" : "Condition"
     }, function(session){
 
-			mysession = session;
+			mysession2 = session;
 
 		$("#functR").text("");
 		$("#functC").text("extractWeather");
-        $("#key").text(mysession.getKey());
-        $("#location").text(mysession.getLoc());
+        $("#key").text(mysession2.getKey());
+        $("#location").text(mysession2.getLoc());
 		      //on success call RemoveOutliers()
       //RemoveOutliers1(session);
     }).fail(function(){
