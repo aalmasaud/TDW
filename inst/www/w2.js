@@ -261,25 +261,25 @@ $(document).ready(function(){
         $("#key").text(mysession2.getKey());
         $("#location").text(mysession2.getLoc());
 		      //on success call RemoveOutliers()
-      SelectColumns(session);
+      SelectColumns(session,'["Hour","Condition"]');
     }).fail(function(){
       alert("Server error: " + req.responseText);
     });        
   }	
 	
-   function SelectColumns(mydata){
+   function SelectColumns(mydata,columns){
 	$("#functR").text("selectColumn");
 
 	//perform the request
     var req = ocpu.call("selectColumn", {
      "dataFile" : mydata,
-     "..." : '["Hour","Condition"]'
+     "..." : columns
     }, function(session){
 
 			mysession2 = session;
 
 		$("#functR").text("");
-		$("#functC").text("extractWeather");
+		$("#functC").text("selectColumn");
         $("#key").text(mysession2.getKey());
         $("#location").text(mysession2.getLoc());
 		      //on success call RemoveOutliers()
