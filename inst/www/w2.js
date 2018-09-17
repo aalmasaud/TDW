@@ -250,6 +250,7 @@ $(document).ready(function(){
 	//perform the request
     var req = ocpu.call("extractWeather", {
      "dataFile" : mydata,
+	    "fromColumn" : "Weather_phenomena",
 	 "toColumn" : "Condition"
     }, function(session){
 
