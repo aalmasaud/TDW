@@ -339,7 +339,7 @@ $(document).ready(function(){
 
 	//perform the request
     var req = ocpu.call("join", {
-     "d" : "m",
+     "d" : "dplyr",
 	 "dataFile1" : mydata1,
 	 "dataFile2" : mydata2,
 	 "by1":"Hour",
@@ -353,37 +353,12 @@ $(document).ready(function(){
         $("#key").text(mysession3.getKey());
         $("#location").text(mysession3.getLoc());
       //on success call readXLS()
-          Join2(mysession,mysession2);
+//          Join2(mysession,mysession2);
     }).fail(function(){
       alert("Server error: " + req.responseText);
     });        
   }
 	
-    function Join2(mydata1,mydata2){
-	$("#functR").text("join2");
-
-	//perform the request
-    var req = ocpu.call("join", {
-     "d" : "d",
-	 "dataFile1" : mydata1,
-	 "dataFile2" : mydata2,
-	 "by1":"Hour",
-	 "by2":"Hour"
-    }, function(session){
-
-			mysession3 = session;
-
-		$("#functR").text(mysession3.getKey());
-		$("#functC").text("join2");
-    //    $("#key").text(mysession3.getKey());
-    //    $("#location").text(mysession3.getLoc());
-			//on success create output file link
-		      //on success call readXLS()
-//			  readXLS(session);
-    }).fail(function(){
-      alert("Server error: " + req.responseText);
-    });        
-  }
   
   
   $("#submitbutton").on("click", function(){
