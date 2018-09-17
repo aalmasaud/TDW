@@ -267,6 +267,29 @@ $(document).ready(function(){
     });        
   }	
 	
+   function selectColumns(mydata){
+	$("#functR").text("selectColumn");
+
+	//perform the request
+    var req = ocpu.call("selectColumn", {
+     "dataFile" : mydata,
+     "..." : '["Hour","Condition"]'
+    }, function(session){
+
+			mysession2 = session;
+
+		$("#functR").text("");
+		$("#functC").text("extractWeather");
+        $("#key").text(mysession2.getKey());
+        $("#location").text(mysession2.getLoc());
+		      //on success call RemoveOutliers()
+      //RemoveOutliers1(session);
+    }).fail(function(){
+      alert("Server error: " + req.responseText);
+    });        
+  }	
+	
+	
    function RemoveOutliers1(mydata){
 	$("#functR").text("RemoveOutliers-Speed");
 
