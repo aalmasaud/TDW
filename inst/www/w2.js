@@ -348,7 +348,7 @@ $(document).ready(function(){
 
 			mysession3 = session;
 
-		$("#functR").text("");
+		$("#functR").text("t");
 		$("#functC").text("join");
         $("#key").text(mysession3.getKey());
         $("#location").text(mysession3.getLoc());
