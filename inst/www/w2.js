@@ -283,7 +283,7 @@ $(document).ready(function(){
         $("#key").text(mysession2.getKey());
         $("#location").text(mysession2.getLoc());
 		      //on success call RemoveOutliers()
-      //RemoveOutliers1(session);
+      Join(mysession,mysession2);
     }).fail(function(){
       alert("Server error: " + req.responseText);
     });        
@@ -334,7 +334,32 @@ $(document).ready(function(){
       alert("Server error: " + req.responseText);
     });        
   }
+   function Join(mydata1,mydata2){
+	$("#functR").text("join");
 
+	//perform the request
+    var req = ocpu.call("join", {
+     "d" : "m",
+	 "dataFile1" : mydata1,
+	 "dataFile2" : mydata2,
+	 "by1":"Hour",
+	 "by2":"Hour",
+	 "...": "Hour"
+    }, function(session){
+
+			mysession3 = session;
+
+		$("#functR").text("");
+		$("#functC").text("RemoveOutliers-Length");
+        $("#key").text(mysession3.getKey());
+        $("#location").text(mysession3.getLoc());
+			//on success create output file link
+		      //on success call readXLS()
+//			  readXLS(session);
+    }).fail(function(){
+      alert("Server error: " + req.responseText);
+    });        
+  }
     
   
   
