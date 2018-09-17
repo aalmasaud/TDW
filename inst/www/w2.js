@@ -261,13 +261,13 @@ $(document).ready(function(){
         $("#key").text(mysession2.getKey());
         $("#location").text(mysession2.getLoc());
 		      //on success call RemoveOutliers()
-      //RemoveOutliers1(session);
+      SelectColumns(session);
     }).fail(function(){
       alert("Server error: " + req.responseText);
     });        
   }	
 	
-   function selectColumns(mydata){
+   function SelectColumns(mydata){
 	$("#functR").text("selectColumn");
 
 	//perform the request
