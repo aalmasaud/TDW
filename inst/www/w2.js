@@ -352,15 +352,14 @@ $(document).ready(function(){
 		$("#functC").text("join");
         $("#key").text(mysession3.getKey());
         $("#location").text(mysession3.getLoc());
-			//on success create output file link
-		      //on success call readXLS()
-			  Join2(mysession1,mysession2);
+      //on success call readXLS()
+          Join2(mysession,mysession2);
     }).fail(function(){
       alert("Server error: " + req.responseText);
     });        
   }
     function Join2(mydata1,mydata2){
-	$("#functR").text("join");
+	$("#functR").text("join2");
 
 	//perform the request
     var req = ocpu.call("join", {
@@ -374,7 +373,7 @@ $(document).ready(function(){
 			mysession3 = session;
 
 		$("#functR").text(mysession3.getKey());
-		$("#functC").text("join");
+		$("#functC").text("join2");
     //    $("#key").text(mysession3.getKey());
     //    $("#location").text(mysession3.getLoc());
 			//on success create output file link
