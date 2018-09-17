@@ -343,14 +343,13 @@ $(document).ready(function(){
 	 "dataFile1" : mydata1,
 	 "dataFile2" : mydata2,
 	 "by1":"Hour",
-	 "by2":"Hour",
-	 "...": "all.x"
+	 "by2":"Hour"
     }, function(session){
 
 			mysession3 = session;
 
 		$("#functR").text("");
-		$("#functC").text("RemoveOutliers-Length");
+		$("#functC").text("join");
         $("#key").text(mysession3.getKey());
         $("#location").text(mysession3.getLoc());
 			//on success create output file link
