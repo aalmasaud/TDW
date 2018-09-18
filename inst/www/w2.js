@@ -364,7 +364,7 @@ $(document).ready(function(){
 	$("#functR").text("plotData");
 
 	//perform the request
-    var req = ocpu.call("join", {
+    var req = ocpu.call("plotData", {
 	 "dataFile" : mydata1
     }, function(session){
 
