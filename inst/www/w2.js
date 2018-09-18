@@ -365,7 +365,7 @@ $(document).ready(function(){
 
 	//perform the request
     var req = ocpu.call("plotData", {
-	 "dataFile" : mydata1
+	 "dataFile" : mydata
     }, function(session){
 
 			mysession3 = session;
