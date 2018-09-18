@@ -352,14 +352,37 @@ $(document).ready(function(){
 		$("#functC").text("join");
         $("#key").text(mysession3.getKey());
         $("#location").text(mysession3.getLoc());
-      //on success call readXLS()
-//          Join2(mysession,mysession2);
+      //on success call plotData()
+          PlotData(session);
     }).fail(function(){
       alert("Server error: " + req.responseText);
     });        
   }
 	
-  
+ 
+   function PlotData(mydata){
+	$("#functR").text("plotData");
+
+	//perform the request
+    var req = ocpu.call("join", {
+	 "dataFile" : mydata1
+    }, function(session){
+
+			mysession3 = session;
+
+		$("#functR").text("");
+		$("#functC").text("plotData");
+        $("#key").text(mysession3.getKey());
+        $("#location").text(mysession3.getLoc());
+	$("#graphFileLink").attr("href", mysession3.getLoc() + "files/visual.html");
+
+	    '
+      //on success call plotData()
+        //  PlotData(session);
+    }).fail(function(){
+      alert("Server error: " + req.responseText);
+    });        
+  } 
   
   $("#submitbutton").on("click", function(){
     
