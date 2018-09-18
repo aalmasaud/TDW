@@ -375,8 +375,6 @@ $(document).ready(function(){
         $("#key").text(mysession3.getKey());
         $("#location").text(mysession3.getLoc());
 	$("#graphFileLink").attr("href", mysession3.getLoc() + "files/visual.html");
-
-	    '
       //on success call plotData()
         //  PlotData(session);
     }).fail(function(){
