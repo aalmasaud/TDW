@@ -23,7 +23,8 @@ $(document).ready(function(){
         $("#key").text(mysession.getKey());
         $("#location").text(mysession.getLoc());
       //on success call enrichTimestamp()
-      removeColumns(session);
+//      readXLS(session);
+	    removeColumns(session);
     });
     
     //if R returns an error, alert the error message
@@ -37,7 +38,74 @@ $(document).ready(function(){
     });        
   }    
   
+
+  function readXLS(mydata){
+	$("#functR").text("readXLS");
+	//perform the request
+    var req = ocpu.call("readFile", {
+      type : $("#ftype2").val(),
+	  file : $("#fileaddr2").val()
+    }, function(session){
+
+			mysession2 = session;
+
+		$("#functR").text("");
+		$("#functC").text("readXLS");
+        $("#key").text(mysession2.getKey());
+        $("#location").text(mysession2.getLoc());
+				      //on success call formatDateISO()
+      formatDateISO(session);
+		
+    }).fail(function(){
+      alert("Server error: " + req.responseText);
+    });        
+  }
   
+  function formatDateISO(mydata){
+	$("#functR").text("formatDateTimeISO");
+	//perform the request
+    var req = ocpu.call("formatDateTimeISO", {
+      dataFile : mydata,
+      "fromColumn" : "Local_time_in_Manchester_(airport)",
+      "toColumn" : "Time" 
+    }, function(session){
+
+			mysession2 = session;
+
+		$("#functR").text("");
+		$("#functC").text("formatDateTimeISO");
+        $("#key").text(mysession2.getKey());
+        $("#location").text(mysession2.getLoc());
+				      //on success call RoundToNearestHour()
+      FilterTime(session);
+		
+    }).fail(function(){
+      alert("Server error: " + req.responseText);
+    });        
+  }	
+
+  function FilterTime(mydata){
+	$("#functR").text("filterTime");
+	//perform the request
+      var req = ocpu.call("filter2", {
+     "dataFile" : mydata,
+     "..." : "wtime"
+    }, function(session){
+
+			mysession2 = session;
+
+		$("#functR").text("");
+		$("#functC").text("filterTime");
+        $("#key").text(mysession2.getKey());
+        $("#location").text(mysession2.getLoc());
+				      //on success call RoundToNearestHour()
+      RoundToNearestHour2(session);
+		
+    }).fail(function(){
+      alert("Server error: " + req.responseText);
+    });        
+  }	
+	
   function enrichTimestamp(mydata){
 	$("#functR").text("enrichTimestamp");
 
@@ -92,7 +160,7 @@ $(document).ready(function(){
 	//perform the request
     var req = ocpu.call("filter2", {
      "dataFile" : mydata,
-	 "..." : "Class == 2"
+     "..." : "Class == 2"
     }, function(session){
 
 			mysession = session;
@@ -115,8 +183,7 @@ $(document).ready(function(){
     var req = ocpu.call("roundToNearestHour", {
      "dataFile" : mydata,
 	 "type" : "trunc",
-	 "fromColumn" : "Date",
-	 "toColumn" : "Hour"
+	 "fromColumn" : "Date"
     }, function(session){
 
 			mysession = session;
@@ -132,7 +199,97 @@ $(document).ready(function(){
     });        
   }
 
+   function RoundToNearestHour2(mydata){
+	$("#functR").text("RoundToNearestHour");
+
+	//perform the request
+    var req = ocpu.call("roundToNearestHour", {
+     "dataFile" : mydata,
+	 "type" : "round",
+	 "fromColumn" : "Time"
+    }, function(session){
+
+			mysession2 = session;
+
+		$("#functR").text("");
+		$("#functC").text("RoundToNearestHour");
+        $("#key").text(mysession2.getKey());
+        $("#location").text(mysession2.getLoc());
+		      //on success call CreateColumn()
+      CreateColumn(session,"Condition");
+    }).fail(function(){
+      alert("Server error: " + req.responseText);
+    });        
+  }
+
+   function CreateColumn(mydata,colName){
+	$("#functR").text("createColumn");
+
+	//perform the request
+    var req = ocpu.call("createColumn", {
+     "dataFile" : mydata,
+	 "newcol" : colName
+    }, function(session){
+
+			mysession2 = session;
+
+		$("#functR").text("");
+		$("#functC").text("createColumn");
+        $("#key").text(mysession2.getKey());
+        $("#location").text(mysession2.getLoc());
+		      //on success call RemoveOutliers()
+      ExtractWeather(session);
+    }).fail(function(){
+      alert("Server error: " + req.responseText);
+    });        
+  }
   
+   function ExtractWeather(mydata){
+	$("#functR").text("extractWeather");
+
+	//perform the request
+    var req = ocpu.call("extractWeather", {
+     "dataFile" : mydata,
+	    "fromColumn" : "Weather_phenomena",
+	 "toColumn" : "Condition"
+    }, function(session){
+
+			mysession2 = session;
+
+		$("#functR").text("");
+		$("#functC").text("extractWeather");
+        $("#key").text(mysession2.getKey());
+        $("#location").text(mysession2.getLoc());
+		      //on success call RemoveOutliers()
+      SelectColumns(session,'["Hour","Condition"]');
+    }).fail(function(){
+      alert("Server error: " + req.responseText);
+    });        
+  }	
+	
+   function SelectColumns(mydata,columns){
+	$("#functR").text("selectColumn");
+
+	//perform the request
+    var req = ocpu.call("selectColumn", {
+     "dataFile" : mydata,
+     "..." : columns
+    }, function(session){
+
+			mysession2 = session;
+
+		$("#functR").text("");
+		$("#functC").text("selectColumn");
+        $("#key").text(mysession2.getKey());
+        $("#location").text(mysession2.getLoc());
+		      //on success call RemoveOutliers()
+      Join(mysession,mysession2);
+    }).fail(function(){
+      alert("Server error: " + req.responseText);
+    });        
+  }	
+	
+	
    function RemoveOutliers1(mydata){
 	$("#functR").text("RemoveOutliers-Speed");
 
@@ -171,24 +328,75 @@ $(document).ready(function(){
         $("#location").text(mysession.getLoc());
 			//on success create output file link
 		$("#csvFileLink").attr("href", mysession.getLoc() + "R/.val/csv");
-		      //on success call enrichTimestamp()
-      //enrichTimestamp(session);
+		      //on success call readXLS()
+			  readXLS(session);
     }).fail(function(){
       alert("Server error: " + req.responseText);
     });        
   }
+   function Join(mydata1,mydata2){
+	$("#functR").text("join");
 
-  
-  
+	//perform the request
+    var req = ocpu.call("join", {
+     "d" : "dplyr",
+	 "dataFile1" : mydata1,
+	 "dataFile2" : mydata2,
+	 "by1":"Hour",
+	 "by2":"Hour"
+    }, function(session){
+
+			mysession3 = session;
+
+		$("#functR").text("");
+		$("#functC").text("join");
+        $("#key").text(mysession3.getKey());
+        $("#location").text(mysession3.getLoc());
+      //on success call plotData()
+          PlotData(session);
+    }).fail(function(){
+      alert("Server error: " + req.responseText);
+    });        
+  }
+	
+ 
+   function PlotData(mydata){
+	$("#functR").text("plotData");
+
+	//perform the request
+    var req = ocpu.call("plotData", {
+	 "dataFile" : mydata,
+	 "col": "Condition"
+    }, function(session){
+
+			mysession3 = session;
+
+		$("#functR").text("");
+		$("#functC").text("plotData");
+        $("#key").text(mysession3.getKey());
+        $("#location").text(mysession3.getLoc());
+	$("#graphFileLink").attr("href", mysession3.getLoc() + "files/visual.html");
+      //on success call plotData()
+        //  PlotData(session);
+    }).fail(function(){
+      alert("Server error: " + req.responseText);
+    });        
+  } 
   
   $("#submitbutton").on("click", function(){
     
     //arguments
     var ftype = $("#ftype").val();
     var myfile = $("#fileaddr").val();
+    var ftype2 = $("#ftype2").val();
+    var myfile2 = $("#fileaddr2").val();
     
     if(!myfile){
-      alert("No file selected.");
+      alert("No Traffic data file entered.");
+      return;
+    }
+	     if(!myfile2){
+      alert("No Weather data file entered.");
       return;
     }
     
