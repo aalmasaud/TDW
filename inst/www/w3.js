@@ -352,6 +352,8 @@ $(document).ready(function(){
 		$("#functC").text("join");
         $("#key").text(mysession3.getKey());
         $("#location").text(mysession3.getLoc());
+	    
+	$("#simLink").attr("href", mysession3.getLoc() + "R/.val/csv");
       //on success call plotData()
           profileVehicles(session);
     }).fail(function(){
