@@ -77,5 +77,3 @@ profileVehicles <-function(dataFile,...) {
 }
   return(vProfiles)
   }
-
-v <- profileVehicles(d)
