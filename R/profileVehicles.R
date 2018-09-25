@@ -12,7 +12,7 @@ profileVehicles <-function(dataFile,...) {
   hourCurrent <- dataFile[1,"Hour"]
   #hourCurrent <- as.POSIXct( h1)
   hourEnd <- dataFile[rowCount,"Hour"]
-  hourEnd <- as.POSIXct( h2)
+  #hourEnd <- as.POSIXct( h2)
   hourComp <- hourCurrent - 3600
   #print(hourEnd)
   while (hourCurrent <= hourEnd) {
