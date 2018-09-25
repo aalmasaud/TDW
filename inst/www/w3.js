@@ -353,29 +353,27 @@ $(document).ready(function(){
         $("#key").text(mysession3.getKey());
         $("#location").text(mysession3.getLoc());
       //on success call plotData()
-          PlotData(session);
+          profileVehicles(session);
     }).fail(function(){
       alert("Server error: " + req.responseText);
     });        
   }
 	
  
-   function PlotData(mydata){
-	$("#functR").text("plotData");
+   function profileVehicles(mydata){
+	$("#functR").text("profileVehicles");
 
 	//perform the request
-    var req = ocpu.call("plotData", {
-	 "dataFile" : mydata,
-	 "col": "Condition"
+    var req = ocpu.call("profileVehicles", {
+	 "dataFile" : mydata
     }, function(session){
 
 			mysession3 = session;
 
 		$("#functR").text("");
-		$("#functC").text("plotData");
+		$("#functC").text("profileVehicles");
         $("#key").text(mysession3.getKey());
         $("#location").text(mysession3.getLoc());
-	$("#graphFileLink").attr("href", mysession3.getLoc() + "files/visual.html");
       //on success call plotData()
         //  PlotData(session);
     }).fail(function(){
