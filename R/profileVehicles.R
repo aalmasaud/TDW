@@ -9,9 +9,9 @@ profileVehicles <-function(dataFile,...) {
 
   set.seed(25)
   rowCount <- nrow(dataFile)
-  h1 <- trunc(strptime(dataFile[1,"Date"],"%Y-%m-%d %H:%M:%S"), units="hour")
-  hourCurrent <- as.POSIXct( h1)
-  h2 <- trunc(strptime(dataFile[rowCount,"Date"],"%Y-%m-%d %H:%M:%S"), units="hour")
+  hourCurrent <- dataFile[1,"Hour"]
+  #hourCurrent <- as.POSIXct( h1)
+  hourEnd <- dataFile[rowCount,"Hour"]
   hourEnd <- as.POSIXct( h2)
   hourComp <- hourCurrent - 3600
   #print(hourEnd)
