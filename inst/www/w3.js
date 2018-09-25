@@ -379,7 +379,7 @@ $(document).ready(function(){
       //on success call plotData()
         //  PlotData(session);
     }).fail(function(){
-      alert("Server error: " + session + req.responseText);
+      alert("Server error: "  + req.responseText);
     });        
   } 
   
