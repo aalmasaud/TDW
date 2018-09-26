@@ -366,7 +366,7 @@ $(document).ready(function(){
 	$("#functR").text("profileVehicles");
 
 	//perform the request
-    var req = ocpu.call("profileVehicles", {
+    var req = ocpu.call("p", {
 	 "dataFile" : mydata
     }, function(session){
 
