@@ -9,7 +9,7 @@ p <- function(dataFile,...) {
   h <- dataFile[1,"Hour"]
   while (hourCurrent <= hourEnd) {
     if (as.character(hourCurrent,format = "%Y-%m-%d %H:%M:%S",usetz=FALSE) != as.character(hourComp,format = "%Y-%m-%d %H:%M:%S",usetz=FALSE)){
-    Tt <- filter2(dataFile,paste0('trim(Hour) = ','trim("',as.numeric(hourCurrent),'")',sep=""))
+    Tt <- filter2(dataFile,paste0('Hour = ',as.numeric(hourCurrent),sep=""))
 
       h<-rbind(h,Tt$Hour)
     }
