@@ -16,5 +16,7 @@ p <- function(dataFile,...) {
     hourComp <- hourCurrent
     hourCurrent <- hourCurrent+3600
   }
+  print(class(dataFile$Hour))
+  print(class(hourCurrent))
   return(h)
 }
