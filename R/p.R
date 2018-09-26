@@ -18,5 +18,5 @@ p <- function(dataFile,...) {
   }
   print(class(dataFile$Hour))
   print(class(hourCurrent))
-  return(h)
+  return(Tt$Hour)
 }
