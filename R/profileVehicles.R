@@ -15,15 +15,10 @@ profileVehicles <-function(dataFile,...) {
   #hourEnd <- as.POSIXct( h2)
   hourComp <- hourCurrent - 3600
   #print(hourEnd)
- # h <- dataFile[1,"Speed__mph_"]
   while (hourCurrent <= hourEnd) {
     if (as.character(hourCurrent,format = "%Y-%m-%d %H:%M:%S",usetz=FALSE) != as.character(hourComp,format = "%Y-%m-%d %H:%M:%S",usetz=FALSE)){
-    #print(as.character(hourCurrent,format = "%Y-%m-%d %H:%M:%S",usetz=FALSE))
-    #Tt <- filter2(dataFile,paste0('Hour == ','"',hourCurrent,'"',sep=""))  
-    #Tt <- filter2(dataFile,paste0('Hour == "',as.character(hourCurrent,format = "%Y-%m-%d %H:%M:%S",usetz=FALSE),'"',sep=""))
       Tt <- filter2(dataFile,paste0('Hour = ',as.numeric(hourCurrent),sep=""))
       weather <- Tt[1,"Condition"]
-#h <- rbind(h,Tt$"Speed__mph_")
 #if (FALSE) {
     kmeans_ret <- kmeans(Tt$Speed__mph_,3,nstart=10)
 
