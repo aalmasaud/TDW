@@ -21,7 +21,7 @@ profileVehicles <-function(dataFile,...) {
     #print(as.character(hourCurrent,format = "%Y-%m-%d %H:%M:%S",usetz=FALSE))
     #Tt <- filter2(dataFile,paste0('Hour == ','"',hourCurrent,'"',sep=""))  
     #Tt <- filter2(dataFile,paste0('Hour == "',as.character(hourCurrent,format = "%Y-%m-%d %H:%M:%S",usetz=FALSE),'"',sep=""))
-      Tt <- filter2(dataFile,paste0('Hour == ','"',as.character(hourCurrent,format = "%Y-%m-%d %H:%M:%S",usetz=FALSE),'"',sep=""))
+      Tt <- filter2(dataFile,paste0('Hour = ',as.numeric(hourCurrent),sep=""))
       weather <- Tt[1,"Condition"]
 h <- rbind(h,Tt$"Speed__mph_")
 if (FALSE) {
