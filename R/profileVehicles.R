@@ -76,5 +76,5 @@ if (FALSE) {
     hourComp <- hourCurrent
     hourCurrent <- hourCurrent+3600
 }
-  return(Tt[,"Speed__mph_"])
+  return(Tt)
   }
