@@ -22,8 +22,8 @@ profileVehicles <-function(dataFile,...) {
     #Tt <- filter2(dataFile,paste0('Hour == "',as.character(hourCurrent,format = "%Y-%m-%d %H:%M:%S",usetz=FALSE),'"',sep=""))
     weather <- Tt[1,"Condition"]
 
-
-    'kmeans_ret <- kmeans(Tt$Speed__mph_,3,nstart=10)
+if (FALSE) {
+    kmeans_ret <- kmeans(Tt$Speed__mph_,3,nstart=10)
 
     Tt$classes <- fitted(kmeans_ret,method = c("classes"))
     Tt$centers <- fitted(kmeans_ret,method = c("centers"))
@@ -65,12 +65,13 @@ profileVehicles <-function(dataFile,...) {
     r$distribution <- format(r$distribution,digits = 1,nsmall=0)
     r$time <- as.character(r$time)
     r$date <- as.character(r$date)
-   '"
+    
     if (exists('vProfiles')) {
       vProfiles <- rbind(vProfiles,r)
     } else {
       vProfiles <- r
-    }"
+    }
+    }
     }
     hourComp <- hourCurrent
     hourCurrent <- hourCurrent+3600
