@@ -8,16 +8,17 @@ enrichTimedate <-function(dataFile,fromColumn,toColumn,startDate,...) {
   tmp2 <- "00"
   date <- as.Date(startDate)
 
-  res <- character(nrow(dataFile))
-  for(i in 1:nrow(dataFile)) {
+  tempStr1 <- dataFile[1, fromColumn]
+  
+    if (nchar(tempStr1)>9){
+      res <-    trimws(stringi::stri_sub(dataFile[, fromColumn],-11))
 
-    tempStr <- dataFile[i, fromColumn]
+    } else {
+	res <- character(nrow(dataFile))
+	for(i in 1:nrow(dataFile)) {
+	
+	tempStr <- dataFile[i, fromColumn]
 
-    if (nchar(tempStr)>9){
-      res[i] <-    trimws(stringi::stri_sub(tempStr,-11))
-
-    }
-    else {
       tmp<-substr(tempStr,0,2)
       if (tmp<tmp2)
         if (c<23)
