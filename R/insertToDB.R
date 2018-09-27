@@ -10,7 +10,7 @@ insertToDB <- function(dataFile,nameDB,...) {
                    user="root", password="",
                    dbname=nameDB, host="localhost", port=3306)
   chunks = 100 
-  for (i in 1:ceiling(nrow(dataFile)/chunksize)) {
+  for (i in 1:ceiling(nrow(dataFile)/chunks)) {
     q = 'INSERT INTO Vehicle_Profiles (date, start_time, average_length, max_speed, average_speed, speed_factor, std_dev_factor, distribution, vehicle_count, acceleration, deceleration) VALUES '
     records = NULL
     for (j in 1:chunks) {
