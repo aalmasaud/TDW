@@ -11,7 +11,7 @@ enrichTimedate <-function(dataFile,fromColumn,toColumn,startDate,...) {
   tempStr1 <- dataFile[1, fromColumn]
   
     if (nchar(tempStr1)>9){
-      res <-    trimws(stringi::stri_sub(dataFile[, fromColumn],-22))
+      res <-    trimws(dataFile[, fromColumn])
 
     } else {
 	res <- character(nrow(dataFile))
