@@ -376,13 +376,34 @@ $(document).ready(function(){
 		$("#functC").text("profileVehicles");
         $("#key").text(mysession3.getKey());
         $("#location").text(mysession3.getLoc());
-      //on success call plotData()
-        //  PlotData(session);
+      //on success call DBInsert()
+          DBInsert(session);
     }).fail(function(){
       alert("Server error: "  + req.responseText);
     });        
   } 
-  
+   function DBInsert(mydata){
+	$("#functR").text("insertToDB");
+
+	//perform the request
+    var req = ocpu.call("insertToDB", {
+	 "dataFile" : mydata,
+	    "nameDB": "sumosimprojectdb"
+    }, function(session){
+
+			mysession3 = session;
+
+		$("#functR").text("");
+		$("#functC").text("insertToDB");
+        $("#key").text(mysession3.getKey());
+        $("#location").text(mysession3.getLoc());
+    }).fail(function(){
+      alert("Server error: "  + req.responseText);
+    });        
+  } 
+
+	
+	
   $("#submitbutton").on("click", function(){
     
     //arguments
