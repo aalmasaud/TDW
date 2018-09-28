@@ -10,6 +10,9 @@ $(document).ready(function(){
         $("#location").text("");
 	  $("#functR").text("readFile");
     $("#csvFileLink").removeAttr("href");
+$("#profFileLink").removeAttr("href");
+	$("#simLink").removeAttr("href");
+		  
     //perform the request
     var req = ocpu.call("readFile", {
       type : ftype,
@@ -327,7 +330,6 @@ $(document).ready(function(){
         $("#key").text(mysession.getKey());
         $("#location").text(mysession.getLoc());
 			//on success create output file link
-		$("#csvFileLink").attr("href", mysession.getLoc() + "R/.val/csv");
 		      //on success call readXLS()
 			  readXLS(session);
     }).fail(function(){
@@ -353,8 +355,9 @@ $(document).ready(function(){
         $("#key").text(mysession3.getKey());
         $("#location").text(mysession3.getLoc());
 	    
-	$("#simLink").attr("href", mysession3.getLoc() + "R/.val/csv");
-      //on success call plotData()
+	$("#csvFileLink").attr("href", mysession3.getLoc() + "R/.val/csv");
+
+      //on success call profileVehicles()
           profileVehicles(session);
     }).fail(function(){
       alert("Server error: " + req.responseText);
@@ -374,8 +377,10 @@ $(document).ready(function(){
 
 		$("#functR").text("");
 		$("#functC").text("profileVehicles");
+	    	    $("#profLink").attr("href", "http://localhost/SUMOclient/public/");
         $("#key").text(mysession3.getKey());
         $("#location").text(mysession3.getLoc());
+		$("#profFileLink").attr("href", mysession3.getLoc() + "R/.val/csv");
       //on success call DBInsert()
           DBInsert(session);
     }).fail(function(){
@@ -395,6 +400,8 @@ $(document).ready(function(){
 
 		$("#functR").text("");
 		$("#functC").text("insertToDB");
+	    $("#simLink").attr("href", "http://localhost/SUMOclient/public/");
+	    
         $("#key").text(mysession3.getKey());
         $("#location").text(mysession3.getLoc());
     }).fail(function(){
