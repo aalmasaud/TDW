@@ -19,7 +19,7 @@ profileVehicles <-function(dataFile,...) {
     if (as.character(hourCurrent,format = "%Y-%m-%d %H:%M:%S",usetz=FALSE) != as.character(hourComp,format = "%Y-%m-%d %H:%M:%S",usetz=FALSE)){
       Tt <- filter2(dataFile,paste0('Hour = ',as.numeric(hourCurrent),sep=""))
       weather <- Tt[1,"Condition"]
-if (length(na.omit(Tt$Speed__mph_)) >= 3) {
+if (length(na.omit(Tt$Speed__mph_)) > 3) {
     kmeans_ret <- kmeans(Tt$Speed__mph_,3,nstart=10)
 
     Tt$classes <- fitted(kmeans_ret,method = c("classes"))
