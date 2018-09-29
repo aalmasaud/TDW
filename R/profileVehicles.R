@@ -53,8 +53,8 @@ if (length(na.omit(Tt$Speed__mph_)) > 3) {
     }
     r$acc <- format(r$acc,digits = 1,nsmall=1)
     r$deac <- format(r$deac,digits = 1,nsmall=1)
-    r$factor_deviation<-format(r$factor_deviation,digits=1,nsmall=2)
-    r$Speed_factor<-format(r$Speed_factor,digits=1,nsmall=2)
+    r$factor_deviation<-sprintf('%0.2f',r$factor_deviation)
+    r$Speed_factor<-sprintf('%0.2f',r$Speed_factor)
     r$Speed__mph_.avg <- format(r$Speed__mph_.avg,digits = 1,nsmall=2)
     r$Speed__mph_.max <- format(r$Speed__mph_.max,digits = 1,nsmall=0)
     r$Length__m_.avg <- format(r$Length__m_.avg,digits = 1,nsmall=2)
