@@ -4,16 +4,8 @@
 
 
 plotData <- function(dataFile,col,...){
-  c <- character(nrow(dataFile))
-
-  for(i in 1:nrow(dataFile)) {
-    tempStr <- dataFile[i,col]
-    if(nchar(tempStr) < 1)
-      c[i] <- "Normal"
-    else
-      c[i] <- tempStr
-  }
-  dataFile[col] <- c  
+  dataFile[col]<-replace(dataFile[col],dataFile[col]=="","Normal")
+  
   avgSpeed <- aggregate(dataFile$Speed__mph_,by=list(Lane=dataFile$Lane,Hour=dataFile$Hour,Condition=dataFile$Condition),FUN=mean)
   require(ggplot2)
   t <- ggplot(avgSpeed, aes(factor(Hour), x, fill = Condition)) + 
