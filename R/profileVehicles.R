@@ -3,22 +3,22 @@
 #
 #
 
-profileVehicles <-function(mydata,...) {
-  dataFile <- as.data.frame(mydata)
+profileVehicles <-function(dataFile,...) {
+  df <- as.data.frame(dataFile)
   default_acc <-2.4
   default_deac <-4.5
 
   set.seed(25)
-  rowCount <- nrow(dataFile)
-  hourCurrent <- dataFile[1,"Hour"]
+  rowCount <- nrow(df)
+  hourCurrent <- df[1,"Hour"]
   #hourCurrent <- as.POSIXct( h1)
-  hourEnd <- dataFile[rowCount,"Hour"]
+  hourEnd <- df[rowCount,"Hour"]
   #hourEnd <- as.POSIXct( h2)
   hourComp <- hourCurrent - 3600
   #print(hourEnd)
   while (hourCurrent <= hourEnd) {
     if (as.character(hourCurrent,format = "%Y-%m-%d %H:%M:%S",usetz=FALSE) != as.character(hourComp,format = "%Y-%m-%d %H:%M:%S",usetz=FALSE)){
-      Tt <- filter2(dataFile,paste0('Hour = ',as.numeric(hourCurrent),sep=""))
+      Tt <- filter2(df,paste0('Hour = ',as.numeric(hourCurrent),sep=""))
       weather <- Tt[1,"Condition"]
 if (length(na.omit(Tt$Speed__mph_)) > 3) {
     kmeans_ret <- kmeans(Tt$Speed__mph_,3,nstart=10)
