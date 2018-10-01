@@ -3,7 +3,8 @@
 #
 #
 
-profileVehicles <-function(dataFile,...) {
+profileVehicles <-function(mydata,...) {
+  dataFile <- as.data.frame(mydata)
   default_acc <-2.4
   default_deac <-4.5
 
